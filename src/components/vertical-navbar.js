@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./vertical-navbar.css";
+import "./css/vertical-navbar.css";
 
 export class VerticalNavbar extends React.Component {
   constructor(props) {
@@ -8,7 +8,6 @@ export class VerticalNavbar extends React.Component {
   render() {
     return (
       <div className="col-sm-2 verticalNavbar">
-        <span className="glyphicon glyphicon-edit" />
         <div className="row">
           <div className="col-sm-12">
             <img
@@ -21,7 +20,7 @@ export class VerticalNavbar extends React.Component {
               <button
                 type="button"
                 className="btn btn-info .btm-md"
-                onClick={() => this.props.toggleDisplay("event")}
+                onClick={() => this.props.toggleDisplay()}
               >
                 About Me
               </button>
@@ -52,5 +51,3 @@ export class VerticalNavbar extends React.Component {
     );
   }
 }
-
-// onClick={() => this.props.removeCard(this.props.id)}

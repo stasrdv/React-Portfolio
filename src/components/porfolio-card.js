@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./porfolio-card.css";
+import "./css/porfolio-card.css";
 import PropTypes from "prop-types";
 
 export class Card extends React.Component {
@@ -19,6 +19,7 @@ export class Card extends React.Component {
   handleTitleChange(event) {
     this.setState({ title: event.target.value });
   }
+
   handleDescriptionChange(event) {
     this.setState({ description: event.target.value });
   }
@@ -47,10 +48,11 @@ export class Card extends React.Component {
         <div className="card-body">
           <div className="form-group" />
           <h5 className="card-title">{this.props.title}</h5>
+          <p className="card-text">{this.props.description}</p>
           <div className={this.state.toggleClas}>
             <div className="col-sm-12">
               <input
-                className="form-control"
+                className="form-control card-title"
                 type="text"
                 placeholder={this.state.title}
                 onChange={this.handleTitleChange}
@@ -58,7 +60,7 @@ export class Card extends React.Component {
             </div>
           </div>
           <div className={this.state.toggleClas}>
-            <div className="col-sm-12 description">
+            <div className="col-sm-12 card-text">
               <textarea
                 className="form-control"
                 rows="5"
@@ -75,11 +77,10 @@ export class Card extends React.Component {
               </button>
             </div>
           </div>
-          <p className="card-text">{this.props.description}</p>
         </div>
         <div className="card-footer">
           <a href={this.props.url} className="card-link">
-            Go To Website
+            Check Now
           </a>
           <div className="row">
             <div className="col-sm-6">

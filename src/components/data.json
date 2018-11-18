@@ -17,7 +17,7 @@
     "id": 3,
     "img": "https://image.winudf.com/v2/image/Y29tLnRhbnhlLmFuZHJvaWQudG9jc2luX2ljb25fMF82MTIyOTM1OA/icon.png?w=170&fakeurl=1&type=.png",
     "title": "TocSin-Low-battery-SmS",
-    "description": "An automatic messaging service that works behind the scenes. Whenever your phone's battery is about to die, TocSin sends a pre-composed message by you to a selected contact.",
+    "description": "An automatic messaging service that works behind the scenes.TocSin sends a pre-composed message by you to a selected contact.",
     "url": "https://github.com/stasrdv/TocSin-Low-battery-SmS"
   },
   {

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Card } from "./porfolio-card";
-import "./portfoliob-board.css";
+import "./css/portfoliob-board.css";
 import jsonData from "./data.json";
 
 const INITIAL_STATE = {

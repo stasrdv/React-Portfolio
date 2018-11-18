@@ -15,7 +15,6 @@ class App extends React.Component {
 
   toggleDisplay = event => {
     this.setState({ isAboutPageActive: !this.state.isAboutPageActive });
-    console.log(this.state);
   };
   render() {
     if (!this.state.isAboutPageActive) {

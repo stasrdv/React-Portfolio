@@ -1,15 +1,17 @@
 .card {
   margin: 20px;
-  display: inline-block;
+  height: 550px;
   background: -webkit-linear-gradient(top, #f2f9fe 0%, #d6f0fd 100%);
-  /* sgadow */
+  /* shadow */
   -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
 }
 .card-img-top {
   padding-top: 10px;
-  display: block;
+  width: 100%;
+  height: 15vw;
+  object-fit: contain;
 }
 .card-footer {
   background-color: transparent;
@@ -19,5 +21,11 @@
 }
 .button-save,
 .description {
+  margin-top: 10px;
+}
+.card .card-block {
+  max-height: 300px;
+}
+.btn {
   margin-top: 10px;
 }
