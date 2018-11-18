@@ -1,0 +1,23 @@
+.card {
+  margin: 20px;
+  display: inline-block;
+  background: -webkit-linear-gradient(top, #f2f9fe 0%, #d6f0fd 100%);
+  /* sgadow */
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+.card-img-top {
+  padding-top: 10px;
+  display: block;
+}
+.card-footer {
+  background-color: transparent;
+}
+.isEditMode {
+  display: none;
+}
+.button-save,
+.description {
+  margin-top: 10px;
+}
