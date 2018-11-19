@@ -1,6 +1,5 @@
 .card {
   margin: 20px;
-  height: 550px;
   background: -webkit-linear-gradient(top, #f2f9fe 0%, #d6f0fd 100%);
   /* shadow */
   -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
@@ -23,9 +22,7 @@
 .description {
   margin-top: 10px;
 }
-.card .card-block {
-  max-height: 300px;
-}
+
 .btn {
   margin-top: 10px;
 }
