@@ -16,6 +16,7 @@ class App extends React.Component {
   toggleDisplay = event => {
     this.setState({ isAboutPageActive: !this.state.isAboutPageActive });
   };
+
   render() {
     if (!this.state.isAboutPageActive) {
       this.ActiveComponent = PorfolioBoard;

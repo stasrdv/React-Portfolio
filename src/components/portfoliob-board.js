@@ -18,7 +18,7 @@ export class PorfolioBoard extends React.Component {
     let _cardsList = this.state.cardsList;
     _cardsList[index].title = cardData.title;
     _cardsList[index].description = cardData.description;
-    this.setState({ cardsList: _cardsList });
+    this.updateState(_cardsList);
   };
 
   removeCard = itemID => {
