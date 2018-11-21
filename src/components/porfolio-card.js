@@ -82,7 +82,7 @@ export class Card extends React.Component {
           <a href={this.props.url} className="card-link">
             Check Now
           </a>
-          <div className="row">
+          <div className="row control-buttons">
             <div className="col-sm-6">
               <button
                 type="button"

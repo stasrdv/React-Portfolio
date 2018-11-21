@@ -19,7 +19,6 @@ export class AboutPage extends React.Component {
           </p>
           <hr className="my-4" />
           <p className="lead">
-            {" "}
             My passionate hobby is Cooking
             <span className="fa fa-cutlery" />
           </p>

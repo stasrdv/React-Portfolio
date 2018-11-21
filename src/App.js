@@ -18,11 +18,9 @@ class App extends React.Component {
   };
 
   render() {
-    if (!this.state.isAboutPageActive) {
-      this.ActiveComponent = PorfolioBoard;
-    } else {
-      this.ActiveComponent = AboutPage;
-    }
+    this.ActiveComponent = !this.state.isAboutPageActive
+      ? PorfolioBoard
+      : AboutPage;
     return (
       <div className="container-fluid">
         <div className="row">
