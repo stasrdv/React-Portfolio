@@ -1,18 +1,25 @@
 import React, { Component } from "react";
 import "./css/porfolio-card.css";
 import PropTypes from "prop-types";
+import { ImgTop } from "./card-componets/img-top";
+import { CardDisplayBody } from "./card-componets/card-body";
+import { EditModeCard } from "./card-componets/edit-mode-card";
+import { CardFooter } from "./card-componets/card-footer";
 
 export class Card extends React.Component {
+  ActiveCardFragment;
   constructor(props) {
     super(props);
     this.state = {
       title: this.props.title,
       description: this.props.description,
-      toggleClas: "isEditMode"
+      isEditMode: false
     };
+
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleItemDelete = this.handleItemDelete.bind(this);
     this.toggleEditMode = this.toggleEditMode.bind(this);
   }
 
@@ -35,74 +42,34 @@ export class Card extends React.Component {
     this.toggleEditMode();
   }
 
+  handleItemDelete() {
+    this.props.removeCard(this.props.id);
+  }
   toggleEditMode() {
-    this.state.toggleClas == "isEditMode"
-      ? this.setState({ toggleClas: "row" })
-      : this.setState({ toggleClas: "isEditMode" });
+    this.setState({ isEditMode: !this.state.isEditMode });
   }
 
   render() {
+    const cardProps = this.props;
+    this.ActiveModeFragment = !this.state.isEditMode
+      ? CardDisplayBody
+      : EditModeCard;
     return (
       <form className="col-sm-3 card" onSubmit={this.handleSubmit}>
-        <img className="card-img-top" src={this.props.img} />
+        <ImgTop img={cardProps.img} />
         <div className="card-body">
           <div className="form-group" />
-          <h5 className="card-title">{this.props.title}</h5>
-          <p className="card-text">{this.props.description}</p>
-          <div className={this.state.toggleClas}>
-            <div className="col-sm-12">
-              <input
-                className="form-control card-title"
-                type="text"
-                placeholder={this.state.title}
-                onChange={this.handleTitleChange}
-              />
-            </div>
-          </div>
-          <div className={this.state.toggleClas}>
-            <div className="col-sm-12 card-text">
-              <textarea
-                className="form-control"
-                rows="5"
-                type="text"
-                placeholder={this.state.description}
-                onChange={this.handleDescriptionChange}
-              />
-            </div>
-          </div>
-          <div className={this.state.toggleClas}>
-            <div className="col-sm-3 button-save">
-              <button type="submit" className="btn btn-success">
-                Save
-              </button>
-            </div>
-          </div>
+          <this.ActiveModeFragment
+            props={cardProps}
+            handleTitleChange={this.handleTitleChange}
+            handleDescriptionChange={this.handleDescriptionChange}
+          />
         </div>
-        <div className="card-footer">
-          <a href={this.props.url} className="card-link">
-            Check Now
-          </a>
-          <div className="row control-buttons">
-            <div className="col-sm-6">
-              <button
-                type="button"
-                className="btn btn-warning btn-sm align-self-end"
-                onClick={this.toggleEditMode}
-              >
-                Edit
-              </button>
-            </div>
-            <div className="col-sm-6">
-              <button
-                type="button"
-                onClick={() => this.props.removeCard(this.props.id)}
-                className="btn btn-danger btn-sm"
-              >
-                Delete
-              </button>
-            </div>
-          </div>
-        </div>
+        <CardFooter
+          props={cardProps}
+          handleItemDelete={this.handleItemDelete}
+          toggleEditMode={this.toggleEditMode}
+        />
       </form>
     );
   }

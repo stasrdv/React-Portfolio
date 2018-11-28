@@ -7,7 +7,9 @@
     #7db9e8 100%
   );
 }
-
+.fa {
+  font-size: 25px;
+}
 .fa-facebook {
   margin-left: 15px;
   color: white;
@@ -18,7 +20,7 @@
 .fa-instagram {
   color: white;
 }
-.social:last-child {
+.social {
   position: fixed;
   bottom: 0;
 }

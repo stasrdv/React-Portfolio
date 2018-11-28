@@ -18,22 +18,19 @@ export class PorfolioBoard extends React.Component {
     let _cardsList = this.state.cardsList;
     _cardsList[index].title = cardData.title;
     _cardsList[index].description = cardData.description;
-    this.updateState(_cardsList);
+    this.setState({ cardsList: _cardsList });
   };
 
   removeCard = itemID => {
     const index = this.findIndex(itemID);
     if (index !== -1) {
       this.state.cardsList.splice(index, 1);
-      this.updateState(this.state.cardsList);
+      this.setState({ cardsList: this.state.cardsList });
     }
   };
 
   findIndex(itemID) {
     return this.state.cardsList.findIndex(cardItem => cardItem.id === itemID);
-  }
-  updateState(_cardsList) {
-    this.setState({ cardsList: _cardsList });
   }
 
   render() {
@@ -43,14 +40,9 @@ export class PorfolioBoard extends React.Component {
         <div className="row">
           {cardsList.map(singleCard => (
             <Card
+              {...{ key: singleCard.id, ...singleCard }}
               handleToUpdate={this.handleToUpdate}
               removeCard={this.removeCard}
-              key={singleCard.id}
-              title={singleCard.title}
-              description={singleCard.description}
-              url={singleCard.url}
-              img={singleCard.img}
-              id={singleCard.id}
             />
           ))}
         </div>

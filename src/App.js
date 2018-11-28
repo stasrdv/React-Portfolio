@@ -13,7 +13,7 @@ class App extends React.Component {
     };
   }
 
-  toggleDisplay = event => {
+  toggleDisplay = () => {
     this.setState({ isAboutPageActive: !this.state.isAboutPageActive });
   };
 
@@ -22,11 +22,9 @@ class App extends React.Component {
       ? PorfolioBoard
       : AboutPage;
     return (
-      <div className="container-fluid">
-        <div className="row">
-          <VerticalNavbar toggleDisplay={this.toggleDisplay} />
-          <this.ActiveComponent />
-        </div>
+      <div className="row">
+        <VerticalNavbar toggleDisplay={this.toggleDisplay} />
+        <this.ActiveComponent />
       </div>
     );
   }
