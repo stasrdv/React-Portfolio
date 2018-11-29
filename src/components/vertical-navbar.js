@@ -3,6 +3,15 @@ import "./css/vertical-navbar.css";
 import { SocialLinks } from "./social";
 
 export function VerticalNavbar(props) {
+  const socialMediaData = [
+    { url: "https://www.facebook.com/stas.rdv", faClassName: "fa-facebook" },
+    { url: "https://www.instagram.com/stasrdv", faClassName: "fa-instagram" },
+    {
+      url: "https://www.linkedin.com/in/stas-rudevitsky-124805113",
+      faClassName: "fa-linkedin"
+    }
+  ];
+
   return (
     <div className="col-sm-2 verticalNavbar">
       <div className="row">
@@ -24,33 +33,14 @@ export function VerticalNavbar(props) {
           </div>
         </div>
         <div className="row social">
-          <SocialLinks
-            url={"https://www.facebook.com/stas.rdv"}
-            faClassName={"fa-facebook"}
-          />
-          <SocialLinks
-            url={"https://www.instagram.com/stasrdv"}
-            faClassName={"fa-instagram"}
-          />
-          <SocialLinks
-            url={"https://www.linkedin.com/in/stas-rudevitsky-124805113"}
-            faClassName={"fa-linkedin"}
-          />
+          {socialMediaData.map(socialMediaObj => (
+            <SocialLinks
+              key={socialMediaObj.faClassName}
+              props={socialMediaObj}
+            />
+          ))}
         </div>
       </div>
     </div>
   );
 }
-
-/* <div className="col-sm-4">
-            <a
-              href="https://www.instagram.com/stasrdv"
-              className="fa fa-instagram"
-            />
-          </div>
-          <div className="col-sm-4">
-            <a
-              href="https://www.linkedin.com/in/stas-rudevitsky-124805113/"
-              className="fa fa-linkedin"
-            />
-          </div> */
