@@ -25,10 +25,10 @@ export function VerticalNavbar(props) {
           <div className="col-sm-2 col-centered">
             <button
               type="button"
-              className="btn btn-info .btm-md"
+              className="btn btn-success .btm-md"
               onClick={() => props.toggleDisplay()}
             >
-              About Me
+              Log In
             </button>
           </div>
         </div>
