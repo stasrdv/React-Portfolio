@@ -15,7 +15,7 @@ export function CardFooter(props) {
               className="btn btn-warning btn-sm align-self-end"
               onClick={props.toggleEditMode}
             >
-              Edit
+              Buy
             </button>
           </div>
           <div className="col-sm-6">

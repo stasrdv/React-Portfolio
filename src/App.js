@@ -1,12 +1,21 @@
 import React, { Component } from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch,
+  Redirect,
+  BrowserRouter
+} from "react-router-dom";
 import { VerticalNavbar } from "./components/vertical-navbar";
 import { PorfolioBoard } from "./components/portfoliob-board";
-import { AboutPage } from "./components/about";
+import { SingleItem } from "./components/singleItem";
 import { Spinner } from "./components/spinner/spinner";
+import { HomePage } from "./components/home";
+import { AboutPage } from "./components/about";
 import "./App.css";
 
 class App extends React.Component {
-  ActiveComponent;
   constructor(props) {
     super(props);
     this.state = {
@@ -15,7 +24,7 @@ class App extends React.Component {
     };
   }
 
-  toggleDisplay = () => {
+  logIn = () => {
     this.setState({ isSpinnerActive: true });
     setTimeout(
       () =>
@@ -28,19 +37,31 @@ class App extends React.Component {
   };
 
   render() {
-    this.ActiveComponent = !this.state.isUserLoggedIn
-      ? PorfolioBoard
-      : AboutPage;
-    if (this.state.isSpinnerActive) {
-      const BusyIndicator = Spinner;
-    }
-    //const BusyIndicator = !this.state.isSpinnerActive ? Spinner : null;
+    const PrivateRoute = ({ component: Component, ...rest }) => (
+      <Route
+        {...rest}
+        render={props =>
+          this.state.isUserLoggedIn === true ? (
+            <Component {...props} />
+          ) : (
+            <Redirect to="/" />
+          )
+        }
+      />
+    );
     return (
-      <div className="row">
-        <Spinner props={this.state.isSpinnerActive} />
-        <VerticalNavbar toggleDisplay={this.toggleDisplay} />
-        <this.ActiveComponent />
-      </div>
+      <Router>
+        <div className="row">
+          <Spinner props={this.state.isSpinnerActive} />
+          <VerticalNavbar logIn={this.logIn} pros={this.state} />
+          <Switch>
+            <Route exact path="/" component={HomePage} />
+            <Route path="/about" component={AboutPage} />
+            <PrivateRoute path="/products" component={PorfolioBoard} />
+            <PrivateRoute path="/product" component={SingleItem} />
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }

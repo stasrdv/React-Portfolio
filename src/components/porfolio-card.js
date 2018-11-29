@@ -1,13 +1,14 @@
 import React, { Component } from "react";
-import "./css/porfolio-card.css";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import PropTypes from "prop-types";
+
+import "./css/porfolio-card.css";
 import { ImgTop } from "./card-componets/img-top";
 import { CardDisplayBody } from "./card-componets/card-body";
 import { EditModeCard } from "./card-componets/edit-mode-card";
 import { CardFooter } from "./card-componets/card-footer";
 
 export class Card extends React.Component {
-  ActiveCardFragment;
   constructor(props) {
     super(props);
     this.state = {
@@ -56,7 +57,9 @@ export class Card extends React.Component {
       : EditModeCard;
     return (
       <form className="col-sm-3 card" onSubmit={this.handleSubmit}>
-        <ImgTop img={cardProps.img} />
+        <Link to={{ pathname: `/product/${cardProps.id}`, props: cardProps }}>
+          <ImgTop img={cardProps.img} />
+        </Link>
         <div className="card-body">
           <div className="form-group" />
           <this.ActiveModeFragment
@@ -65,6 +68,7 @@ export class Card extends React.Component {
             handleDescriptionChange={this.handleDescriptionChange}
           />
         </div>
+
         <CardFooter
           props={cardProps}
           handleItemDelete={this.handleItemDelete}

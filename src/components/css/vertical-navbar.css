@@ -7,11 +7,15 @@
     #7db9e8 100%
   );
 }
+.links a {
+  color: #ffffff !important;
+  font-size: 20px;
+}
+
 .fa {
   font-size: 25px;
 }
 .fa-facebook {
-  margin-left: 15px;
   color: white;
 }
 .fa-linkedin {
@@ -23,9 +27,4 @@
 .social {
   position: fixed;
   bottom: 0;
-}
-.col-centered {
-  float: none;
-  display: block;
-  margin: 0 auto;
 }
