@@ -21,13 +21,15 @@ export function VerticalNavbar(data) {
 
       <div className="row justify-content-sm-center">
         <div className="col-sm-6">
-          <button
-            type="button"
-            className="btn btn-success .btm-md"
-            onClick={() => data.logIn()}
-          >
-            Log In
-          </button>
+          {!data.pros.isUserLoggedIn ? (
+            <button
+              type="button"
+              className="btn btn-success .btm-md login"
+              onClick={() => data.logIn()}
+            >
+              Log In
+            </button>
+          ) : null}
         </div>
       </div>
       <div className="row">

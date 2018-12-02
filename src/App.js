@@ -56,6 +56,7 @@ class App extends React.Component {
   }
 
   render() {
+    //block products route
     const PrivateRoute = ({ component: Component, ...rest }) => (
       <Route
         {...rest}
