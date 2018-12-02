@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import { BrowserRouter as Route, Link } from "react-router-dom";
 import PropTypes from "prop-types";
-
 import "../css/porfolio-card.css";
 import { ImgTop } from "./img-top";
 import { CardDisplayBody } from "./card-body";
 import { EditModeCard } from "./edit-mode-card";
 import { CardFooter } from "./card-footer";
-import { SingleItem } from "../singleItem";
 
 export class Card extends React.Component {
   constructor(props) {

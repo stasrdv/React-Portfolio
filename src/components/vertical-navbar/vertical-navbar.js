@@ -18,7 +18,7 @@ export function VerticalNavbar(data) {
           </Link>
         </div>
       </div>
-
+      {/* LoginButton */}
       <div className="row justify-content-sm-center">
         <div className="col-sm-6">
           {!data.pros.isUserLoggedIn ? (
@@ -32,6 +32,7 @@ export function VerticalNavbar(data) {
           ) : null}
         </div>
       </div>
+      {/* Links */}
       <div className="row">
         <nav className="nav flex-column">
           {data.pros.isUserLoggedIn ? (
@@ -40,7 +41,6 @@ export function VerticalNavbar(data) {
           <Link className="nav-link" to="/products">
             Products
           </Link>
-
           <Link className="nav-link" to="/about">
             About
           </Link>
@@ -49,6 +49,7 @@ export function VerticalNavbar(data) {
           </Link>
         </nav>
       </div>
+      {/* Social Media */}
       <div className="row social">
         {socialMediaData.map(socialMediaObj => (
           <SocialLinks

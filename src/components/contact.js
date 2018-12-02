@@ -4,7 +4,7 @@ import "./css/contact.css";
 export function ContactPage() {
   return (
     <div className="col-sm-10 jumbotron">
-      <h1>Contact Me</h1>
+      <h1>Contact Me Lorem ispum</h1>
       <div className="row">
         <div className="col-sm-3">
           <div className="box">
