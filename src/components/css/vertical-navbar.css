@@ -1,15 +1,25 @@
 .verticalNavbar {
   background: -webkit-linear-gradient(
     top,
-    #1e5799 0%,
+    #1e5799 10%,
     #2989d8 50%,
     #207cca 51%,
     #7db9e8 100%
   );
+  /* remove after full implementation */
+  min-height: 650px !important;
 }
-.links a {
-  color: #ffffff !important;
-  font-size: 20px;
+.nav-link {
+  color: white;
+}
+.nav-link:hover {
+  color: black;
+}
+.cart-text {
+  margin-left: 20px;
+}
+.cart-icon {
+  margin-left: 20px;
 }
 
 .fa {

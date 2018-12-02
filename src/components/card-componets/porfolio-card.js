@@ -1,12 +1,13 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Route, Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import "./css/porfolio-card.css";
-import { ImgTop } from "./card-componets/img-top";
-import { CardDisplayBody } from "./card-componets/card-body";
-import { EditModeCard } from "./card-componets/edit-mode-card";
-import { CardFooter } from "./card-componets/card-footer";
+import "../css/porfolio-card.css";
+import { ImgTop } from "./img-top";
+import { CardDisplayBody } from "./card-body";
+import { EditModeCard } from "./edit-mode-card";
+import { CardFooter } from "./card-footer";
+import { SingleItem } from "../singleItem";
 
 export class Card extends React.Component {
   constructor(props) {
@@ -21,7 +22,9 @@ export class Card extends React.Component {
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleItemDelete = this.handleItemDelete.bind(this);
-    this.toggleEditMode = this.toggleEditMode.bind(this);
+
+    this.buyItem = this.buyItem.bind(this);
+    this.deleteItem = this.deleteItem.bind(this);
   }
 
   handleTitleChange(event) {
@@ -40,14 +43,26 @@ export class Card extends React.Component {
       description: this.state.description
     });
     this.props.handleToUpdate(cardData);
-    this.toggleEditMode();
   }
 
   handleItemDelete() {
     this.props.removeCard(this.props.id);
   }
-  toggleEditMode() {
-    this.setState({ isEditMode: !this.state.isEditMode });
+
+  buyItem() {
+    const cardData = Object.assign({
+      title: this.props.title,
+      id: this.props.id,
+      description: this.props.description,
+      url: this.props.url,
+      img: this.props.img
+    });
+    this.props.buyItem(cardData);
+  }
+
+  deleteItem() {
+    const itemId = this.props.id;
+    this.props.deleteItem(itemId);
   }
 
   render() {
@@ -55,6 +70,7 @@ export class Card extends React.Component {
     this.ActiveModeFragment = !this.state.isEditMode
       ? CardDisplayBody
       : EditModeCard;
+
     return (
       <form className="col-sm-3 card" onSubmit={this.handleSubmit}>
         <Link to={{ pathname: `/product/${cardProps.id}`, props: cardProps }}>
@@ -68,11 +84,10 @@ export class Card extends React.Component {
             handleDescriptionChange={this.handleDescriptionChange}
           />
         </div>
-
         <CardFooter
           props={cardProps}
-          handleItemDelete={this.handleItemDelete}
-          toggleEditMode={this.toggleEditMode}
+          buyItem={this.buyItem}
+          deleteItem={this.deleteItem}
         />
       </form>
     );

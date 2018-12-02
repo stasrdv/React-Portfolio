@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { SocialLinks } from "./social";
-import "./css/vertical-navbar.css";
+import { CartLink } from "./cartLink";
+import "../css/vertical-navbar.css";
 
-export function VerticalNavbar(props) {
+export function VerticalNavbar(data) {
+  const itemsInCart = data.pros.cartItems ? data.pros.cartItems.length : 0;
   return (
     <div className="col-sm-2 verticalNavbar">
       <div className="row">
@@ -16,30 +18,34 @@ export function VerticalNavbar(props) {
           </Link>
         </div>
       </div>
-      <div className="row">
+
+      <div className="row justify-content-sm-center">
         <div className="col-sm-6">
           <button
             type="button"
-            className="btn btn-success .btm-md center-block"
-            onClick={() => props.logIn()}
+            className="btn btn-success .btm-md"
+            onClick={() => data.logIn()}
           >
             Log In
           </button>
         </div>
       </div>
       <div className="row">
-        <div className="col-sm-12 links">
-          <div>
-            <ul>
-              <li>
-                <Link to="/about">About</Link>
-              </li>
-              <li>
-                <Link to="/Products">Products</Link>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <nav className="nav flex-column">
+          {data.pros.isUserLoggedIn ? (
+            <CartLink itemsInCart={itemsInCart} />
+          ) : null}
+          <Link className="nav-link" to="/products">
+            Products
+          </Link>
+
+          <Link className="nav-link" to="/about">
+            About
+          </Link>
+          <Link className="nav-link" to="/contact">
+            Contact
+          </Link>
+        </nav>
       </div>
       <div className="row social">
         {socialMediaData.map(socialMediaObj => (

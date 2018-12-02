@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card } from "./porfolio-card";
+import { Card } from "./card-componets/porfolio-card";
 import "./css/portfoliob-board.css";
 import jsonData from "./data.json";
 
@@ -11,6 +11,7 @@ export class PorfolioBoard extends React.Component {
   constructor(props) {
     super(props);
     this.state = INITIAL_STATE;
+    this.buyItem = this.buyItem.bind(this);
   }
 
   handleToUpdate = cardData => {
@@ -29,10 +30,9 @@ export class PorfolioBoard extends React.Component {
     }
   };
 
-  findIndex(itemID) {
-    return this.state.cardsList.findIndex(cardItem => cardItem.id === itemID);
+  buyItem(singleItem) {
+    this.props.buyItem(singleItem);
   }
-
   render() {
     let cardsList = this.state.cardsList;
     return (
@@ -43,6 +43,7 @@ export class PorfolioBoard extends React.Component {
               {...{ key: singleCard.id, ...singleCard }}
               handleToUpdate={this.handleToUpdate}
               removeCard={this.removeCard}
+              buyItem={this.buyItem}
             />
           ))}
         </div>

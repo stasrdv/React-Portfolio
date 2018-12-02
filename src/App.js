@@ -7,12 +7,14 @@ import {
   Redirect,
   BrowserRouter
 } from "react-router-dom";
-import { VerticalNavbar } from "./components/vertical-navbar";
+import { VerticalNavbar } from "./components/vertical-navbar/vertical-navbar";
 import { PorfolioBoard } from "./components/portfoliob-board";
 import { SingleItem } from "./components/singleItem";
 import { Spinner } from "./components/spinner/spinner";
 import { HomePage } from "./components/home";
 import { AboutPage } from "./components/about";
+import { ContactPage } from "./components/contact";
+import { Cart } from "./components/cart";
 import "./App.css";
 
 class App extends React.Component {
@@ -20,8 +22,11 @@ class App extends React.Component {
     super(props);
     this.state = {
       isUserLoggedIn: false,
-      isSpinnerActive: false
+      isSpinnerActive: false,
+      cartItems: []
     };
+    this.buyItem = this.buyItem.bind(this);
+    this.onIntemDelete = this.onIntemDelete.bind(this);
   }
 
   logIn = () => {
@@ -35,6 +40,20 @@ class App extends React.Component {
       1500
     );
   };
+
+  buyItem(newelement) {
+    const clonedArr = this.state.cartItems;
+    clonedArr.push(newelement);
+    this.setState({
+      cartItems: clonedArr
+    });
+  }
+
+  onIntemDelete(_cartItems) {
+    this.setState({
+      cartItems: _cartItems
+    });
+  }
 
   render() {
     const PrivateRoute = ({ component: Component, ...rest }) => (
@@ -57,7 +76,20 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route path="/about" component={AboutPage} />
-            <PrivateRoute path="/products" component={PorfolioBoard} />
+            <Route path="/contact" component={ContactPage} />
+            <Route
+              path="/cart"
+              component={() => (
+                <Cart
+                  onIntemDelete={this.onIntemDelete}
+                  items={this.state.cartItems}
+                />
+              )}
+            />
+            <PrivateRoute
+              path="/products"
+              component={() => <PorfolioBoard buyItem={this.buyItem} />}
+            />
             <PrivateRoute path="/product" component={SingleItem} />
           </Switch>
         </div>
