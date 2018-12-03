@@ -6,8 +6,6 @@
     #207cca 51%,
     #7db9e8 100%
   );
-  /* remove after full implementation */
-  min-height: 650px !important;
 }
 .nav-link {
   color: white;
@@ -21,7 +19,6 @@
 .cart-icon {
   margin-left: 20px;
 }
-
 .fa {
   font-size: 25px;
 }

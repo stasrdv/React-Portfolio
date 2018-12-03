@@ -3,37 +3,37 @@ import "./css/contact.css";
 
 export function ContactPage() {
   return (
-    <div className="col-sm-10 jumbotron">
-      <h1>Contact Me Lorem ispum</h1>
-      <div className="row">
-        <div className="col-sm-3">
-          <div className="box">
-            <h3>Column 3</h3>
-            <p>Lorem ipsum dolor..</p>
-            <p>Ut enim ad..</p>
-          </div>
-        </div>
-        <div className="col-sm-3">
-          <div className="box">
-            <h3>Column 3</h3>
-            <p>Lorem ipsum dolor..</p>
-            <p>Ut enim ad..</p>
-          </div>
-        </div>
-        <div className="col-sm-3">
-          <div className="box">
-            <h3>Column 3</h3>
-            <p>Lorem ipsum dolor..</p>
-            <p>Ut enim ad..</p>
-          </div>
-        </div>
-        <div className="col-sm-3">
-          <div className="box">
-            <h3>Column 3</h3>
-            <p>Lorem ipsum dolor..</p>
-            <p>Ut enim ad..</p>
-          </div>
-        </div>
+    <div class="jumbotron col-sm-10">
+      <div class="container">
+        <h1 class="display-4">Contact</h1>
+        <p class="lead">
+          This is a modified jumbotron that occupies the entire horizontal space
+          of its parent.
+        </p>
+        <p class="lead">
+          This is a modified jumbotron that occupies the entire horizontal space
+          of its parent.
+        </p>
+        <p class="lead">
+          This is a modified jumbotron that occupies the entire horizontal space
+          of its parent.
+        </p>
+        <p class="lead">
+          This is a modified jumbotron that occupies the entire horizontal space
+          of its parent.
+        </p>
+        <p class="lead">
+          This is a modified jumbotron that occupies the entire horizontal space
+          of its parent.
+        </p>
+        <p class="lead">
+          This is a modified jumbotron that occupies the entire horizontal space
+          of its parent.
+        </p>
+        <p class="lead">
+          This is a modified jumbotron that occupies the entire horizontal space
+          of its parent.
+        </p>
       </div>
     </div>
   );

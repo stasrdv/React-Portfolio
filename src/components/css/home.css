@@ -9,7 +9,6 @@
   );
   background-size: 400% 400%;
   animation: Gradient 15s ease infinite;
-  min-height: 650px;
 }
 
 @-webkit-keyframes Gradient {

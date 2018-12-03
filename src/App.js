@@ -70,7 +70,7 @@ class App extends React.Component {
       />
     );
     return (
-      <Router>
+      <Router className="container">
         <div className="row">
           <Spinner props={this.state.isSpinnerActive} />
           <VerticalNavbar logIn={this.logIn} pros={this.state} />
