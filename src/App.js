@@ -70,30 +70,40 @@ class App extends React.Component {
       />
     );
     return (
-      <Router className="container">
-        <div className="row">
-          <Spinner props={this.state.isSpinnerActive} />
-          <VerticalNavbar logIn={this.logIn} pros={this.state} />
-          <Switch>
-            <Route exact path="/" component={HomePage} />
-            <Route path="/about" component={AboutPage} />
-            <Route path="/contact" component={ContactPage} />
-            <Route
-              path="/cart"
-              component={() => (
-                <Cart
-                  onIntemDelete={this.onIntemDelete}
-                  items={this.state.cartItems}
-                />
-              )}
-            />
-            <PrivateRoute
-              path="/products"
-              component={() => <PorfolioBoard buyItem={this.buyItem} />}
-            />
-            <PrivateRoute path="/product" component={SingleItem} />
-          </Switch>
-        </div>
+      <Router>
+        <Route
+          render={({ location, history }) => (
+            <div className="wrapper">
+              <Spinner props={this.state.isSpinnerActive} />
+              <VerticalNavbar
+                logIn={this.logIn}
+                pros={this.state}
+                history={history}
+              />
+              <div className="content">
+                <Switch>
+                  <Route exact path="/" component={HomePage} />
+                  <Route path="/about" component={AboutPage} />
+                  <Route path="/contact" component={ContactPage} />
+                  <Route
+                    path="/cart"
+                    component={() => (
+                      <Cart
+                        onIntemDelete={this.onIntemDelete}
+                        items={this.state.cartItems}
+                      />
+                    )}
+                  />
+                  <PrivateRoute
+                    path="/products"
+                    component={() => <PorfolioBoard buyItem={this.buyItem} />}
+                  />
+                  <PrivateRoute path="/product" component={SingleItem} />
+                </Switch>
+              </div>
+            </div>
+          )}
+        />
       </Router>
     );
   }

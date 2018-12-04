@@ -70,7 +70,7 @@ export class Card extends React.Component {
       : EditModeCard;
 
     return (
-      <form className="col-sm-3 card" onSubmit={this.handleSubmit}>
+      <form className="col-sm-2 card" onSubmit={this.handleSubmit}>
         <Link to={{ pathname: `/product/${cardProps.id}`, props: cardProps }}>
           <ImgTop img={cardProps.img} />
         </Link>

@@ -24,7 +24,7 @@ export class Cart extends React.Component {
   render() {
     const cardsList = this.state.cardsList;
     return (
-      <div className="col-sm-10 board">
+      <div className="jumobtron board">
         <div className="row">
           {cardsList.map(singleCard => (
             <Card
