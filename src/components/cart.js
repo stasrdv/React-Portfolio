@@ -25,7 +25,7 @@ export class Cart extends React.Component {
     const cardsList = this.state.cardsList;
     return (
       <div className="jumobtron board">
-        <div className="row">
+        <div className="row justify-content-center">
           {cardsList.map(singleCard => (
             <Card
               deleteItem={this.deleteItem}
