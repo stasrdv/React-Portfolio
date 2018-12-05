@@ -14,7 +14,7 @@ import SideNav, {
   NavIcon,
   NavText
 } from "@trendmicro/react-sidenav";
-import "../css/vertical-navbar.css";
+import "../../styles/css/vertical-navbar.css";
 
 export function VerticalNavbar(data) {
   const itemsInCart = data.pros.cartItems ? data.pros.cartItems.length : 0;

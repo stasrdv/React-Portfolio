@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card } from "./card-componets/porfolio-card";
+import { Card } from "../portfolio-board/card/card-componets/porfolio-card";
 
 export class Cart extends React.Component {
   constructor(props) {

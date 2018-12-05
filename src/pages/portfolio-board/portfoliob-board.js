@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Card } from "./card-componets/porfolio-card";
-import "./css/portfoliob-board.css";
-import jsonData from "./data.json";
+import { Card } from "./card/card-componets/porfolio-card";
+import "../../styles/css/portfoliob-board.css";
+import jsonData from "../../shared/data.json";
 
 const INITIAL_STATE = {
   cardsList: jsonData

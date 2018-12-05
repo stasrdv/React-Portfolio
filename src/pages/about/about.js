@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import "./css/about.css";
+import "../../styles/css/about.css";
 
 export function AboutPage() {
   return (
     <div className="col-sm-12">
-      <div className="jumobtron about">
+      <div className="container">
         <h1 className="display-4">Stas Rudevitsky</h1>
         <p className="lead">
           Web and Mobile developer, 28 years old from Tel-Aviv.
