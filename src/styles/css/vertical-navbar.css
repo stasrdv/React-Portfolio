@@ -6,6 +6,13 @@
     #207cca 51%,
     #7db9e8 100%
   ) !important;
+  position: fixed !important;
+}
+.translate {
+  margin-left: 26px;
+  margin-bottom: 15px;
+  color: white;
+  cursor: pointer;
 }
 .nav-link {
   color: white;

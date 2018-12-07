@@ -5,6 +5,7 @@
   "dependencies": {
     "@trendmicro/react-sidenav": "^0.4.5",
     "bootstrap": "^4.1.3",
+    "i18n-react": "^0.6.4",
     "install": "^0.12.2",
     "npm": "^6.4.1",
     "prop-types": "^15.6.2",
