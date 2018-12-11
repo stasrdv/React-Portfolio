@@ -2,10 +2,8 @@ import React, { Component } from "react";
 import {
   BrowserRouter as Router,
   Route,
-  Link,
   Switch,
-  Redirect,
-  BrowserRouter
+  Redirect
 } from "react-router-dom";
 import { VerticalNavbar } from "./components/vertical-navbar/vertical-navbar";
 import { Spinner } from "./components/spinner/spinner";
@@ -56,7 +54,6 @@ class App extends React.Component {
   }
 
   render() {
-    //block products route
     const PrivateRoute = ({ component: Component, ...rest }) => (
       <Route
         {...rest}

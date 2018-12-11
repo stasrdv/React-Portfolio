@@ -9,9 +9,8 @@ import T from "i18n-react";
 export class VerticalNavbar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isMenuTranslated: false, heb: "heb" };
-
-    this.translateMenu = this.translateMenu.bind(this);
+    this.state = { isMenuTranslated: false };
+    this.toggleTranslate = this.toggleTranslate.bind(this);
   }
 
   translateMenu() {
@@ -33,6 +32,9 @@ export class VerticalNavbar extends React.Component {
         en: "About"
       }
     });
+  }
+
+  toggleTranslate() {
     this.setState({ isMenuTranslated: !this.state.isMenuTranslated });
   }
 
@@ -41,7 +43,8 @@ export class VerticalNavbar extends React.Component {
       ? this.props.pros.cartItems.length
       : 0;
 
-    const translateSuffix = !this.state.isMenuTranslated ? "heb" : "en";
+    const translateSuffix = this.state.isMenuTranslated ? "heb" : "en";
+    this.translateMenu();
     return (
       <SideNav
         className="verticalNavbar"
@@ -61,7 +64,8 @@ export class VerticalNavbar extends React.Component {
             />
           </div>
         </NavItem>
-        <NavItem className="translate" onClick={this.translateMenu}>
+        <NavItem className="translate" onClick={this.toggleTranslate}>
+          {translateSuffix.toUpperCase()}
           <NavIcon>
             <i className="fa fa-language" style={{ fontSize: "1.75em" }} />
           </NavIcon>
@@ -88,28 +92,28 @@ export class VerticalNavbar extends React.Component {
             <NavIcon>
               <i className="fa fa-fw fa-home" style={{ fontSize: "1.75em" }} />
             </NavIcon>
-            <NavText>{T.translate("Home")}</NavText>
+            <NavText>{T.translate(`Home.${translateSuffix}`)}</NavText>
           </NavItem>
           <NavItem eventKey="/products">
             <Link className="nav-link" to="/products" />
             <NavIcon>
               <i className="fa fa-list" style={{ fontSize: "1.75em" }} />
             </NavIcon>
-            <NavText>{T.translate("Products")}</NavText>
+            <NavText>{T.translate(`Products.${translateSuffix}`)}</NavText>
           </NavItem>
 
           <NavItem eventKey="/contact">
             <NavIcon>
               <i className="fa fa-envelope-o" style={{ fontSize: "1.75em" }} />
             </NavIcon>
-            <NavText>{T.translate("Contact")}</NavText>
+            <NavText>{T.translate(`Contact.${translateSuffix}`)}</NavText>
           </NavItem>
 
           <NavItem eventKey="/about">
             <NavIcon>
               <i className="fa fa-info" style={{ fontSize: "1.75em" }} />
             </NavIcon>
-            <NavText>{T.translate("About")}</NavText>
+            <NavText>{T.translate(`About.${translateSuffix}`)}</NavText>
           </NavItem>
         </SideNav.Nav>
 
