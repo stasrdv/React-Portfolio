@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Route, Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import "../../../../styles/css/porfolio-card.css";
+import "../../../styles/css/portfoliob-board.css";
 import { ImgTop } from "./img-top";
 import { CardDisplayBody } from "./card-body";
 import { EditModeCard } from "./edit-mode-card";

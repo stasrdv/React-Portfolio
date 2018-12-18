@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { Card } from "../portfolio-board/card/card-componets/porfolio-card";
+import { Card } from "../card/card-componets/porfolio-card";
 
 export class Cart extends React.Component {
   constructor(props) {
     super(props);
+    debugger;
     this.state = { cardsList: this.props.items };
     this.deleteItem = this.deleteItem.bind(this);
   }

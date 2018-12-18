@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "../../styles/css/home.css";
 
-export function HomePage(props) {
+const HomePage = props => {
+  const info = props.info;
   return (
     <div className="jumbotron home-page">
       <div className="container">
@@ -10,7 +11,9 @@ export function HomePage(props) {
           The link to products will be available only after login !
         </p>
         <hr className="my-4" />
+        {info ? <h3>{info}</h3> : null}
       </div>
     </div>
   );
-}
+};
+export default HomePage;

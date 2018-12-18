@@ -6,6 +6,6 @@ import jsonData from "../../shared/data.json";
 const items = jsonData;
 describe("PorfolioBoard component", () => {
   test("should shallow correctly", () => {
-    expect(shallow(<PorfolioBoard items={items} />)).toMatchSnapshot();
+    expect(shallow(<PorfolioBoard items={0} />)).toMatchSnapshot();
   });
 });

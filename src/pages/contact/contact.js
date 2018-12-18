@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "../../styles/css/contact.css";
-
-export function ContactPage() {
+const ContactPage = () => {
   return (
     <div className="col-sm-12">
       <div className="container">
@@ -62,4 +61,5 @@ export function ContactPage() {
       </div>
     </div>
   );
-}
+};
+export default ContactPage;

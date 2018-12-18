@@ -7,6 +7,8 @@
     #7db9e8 100%
   ) !important;
   position: fixed !important;
+  overflow: auto;
+  height: 100%;
 }
 .translate {
   margin-left: 26px;

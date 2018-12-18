@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import "../../styles/css/about.css";
 
-export function AboutPage() {
+const AboutPage = props => {
+  const name = props.name ? props.name : "Stas Rudevitsky";
   return (
     <div className="col-sm-12">
       <div className="container">
-        <h1 className="display-4">Stas Rudevitsky</h1>
+        <h1 className="display-4">{name}</h1>
         <p className="lead">
           Web and Mobile developer, 28 years old from Tel-Aviv.
           <a
@@ -24,4 +25,5 @@ export function AboutPage() {
       </div>
     </div>
   );
-}
+};
+export default AboutPage;

@@ -8,10 +8,10 @@ import {
 import { VerticalNavbar } from "./components/vertical-navbar/vertical-navbar";
 import { Spinner } from "./components/spinner/spinner";
 import { PorfolioBoard } from "./pages/portfolio-board/portfoliob-board";
-import { SingleItem } from "./pages/single-item/singleItem";
-import { HomePage } from "./pages/home/home";
-import { AboutPage } from "./pages/about/about";
-import { ContactPage } from "./pages/contact/contact";
+import SingleItem from "./pages/single-item/singleItem";
+import HomePage from "./pages/home/home";
+import AboutPage from "./pages/about/about";
+import ContactPage from "./pages/contact/contact";
 import { Cart } from "./pages/cart/cart";
 import "./App.css";
 
