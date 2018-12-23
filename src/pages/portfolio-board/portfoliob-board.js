@@ -1,16 +1,11 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Card } from "../card/card-componets/porfolio-card";
 import "../../styles/css/portfoliob-board.css";
-import jsonData from "../../shared/data.json";
-
-const INITIAL_STATE = {
-  cardsList: jsonData
-};
 
 export class PorfolioBoard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = INITIAL_STATE;
     this.buyItem = this.buyItem.bind(this);
   }
 
@@ -18,18 +13,26 @@ export class PorfolioBoard extends React.Component {
     this.props.buyItem(singleItem);
   }
   render() {
-    const cardsList = this.state.cardsList;
+    //const cardsList = this.props.items;
+    console.log(this.props);
     return (
-      <div className="jumbotron board">
-        <div className="row">
-          {cardsList.map(singleCard => (
-            <Card
-              {...{ key: singleCard.id, ...singleCard }}
-              buyItem={this.buyItem}
-            />
-          ))}
-        </div>
-      </div>
+      <h1>HEllo</h1>
+      // <div className="jumbotron board">
+      //   <div className="row">
+      //     {cardsList.map(singleCard => (
+      //       <Card
+      //         {...{ key: singleCard.id, ...singleCard }}
+      //         buyItem={this.buyItem}
+      //       />
+      //     ))}
+      //   </div>
+      // </div>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  items: state.items
+});
+
+export default connect(mapStateToProps)(PorfolioBoard);

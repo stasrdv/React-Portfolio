@@ -5,10 +5,28 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+// Redux
+import { Provider } from "react-redux";
+import logger from "redux-logger";
+import { createStore, combineReducers, applyMiddleware } from "redux";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+import ItemsReducer from "./reducers/itemsReducer";
+import cartItemsReducer from "./reducers/cartItemsReducer";
+import loginReducer from "./reducers/loginReducer";
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
+const allReducers = combineReducers({
+  isUserLoggedIn: loginReducer,
+  items: ItemsReducer,
+  cartItems: cartItemsReducer
+});
+
+const store = createStore(allReducers, applyMiddleware(logger));
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);
+
 serviceWorker.unregister();
