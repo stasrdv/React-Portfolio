@@ -14,46 +14,17 @@ import "./App.css";
 import { connect } from "react-redux";
 import { LogInAction } from "./reducers/actions/login-actions";
 import { BuyNewItem } from "./reducers/actions/cart-items-actions";
+import { DeleteItem } from "./reducers/actions/cart-items-actions";
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    debugger;
-    this.onIntemDelete = this.onIntemDelete.bind(this);
-  }
-
-  logIn = () => {
-    this.props.logIn();
-  };
-
-  onIntemDelete(_cartItems) {
-    this.state.updateCartItems(_cartItems);
-  }
-
   render() {
-    // const PrivateRoute = ({ component: Component, ...rest }) => (
-    //   <Route
-    //     {...rest}
-    //     render={props =>
-    //       this.state.isUserLoggedIn === true ? (
-    //         <Component {...props} />
-    //       ) : (
-    //         <Redirect to="/" />
-    //       )
-    //     }
-    //   />
-    // );
     return (
       <Router>
         <Route
           render={({ location, history }) => (
             <div className="wrapper">
               {/* <Spinner props={this.state.isSpinnerActive} /> */}
-              <VerticalNavbar
-                logIn={this.logIn}
-                pros={this.state}
-                history={history}
-              />
+              <VerticalNavbar props={this.props} history={history} />
               <div className="content">
                 <Switch>
                   <Route exact path="/" component={HomePage} />
@@ -63,6 +34,11 @@ class App extends React.Component {
                   <Route
                     path="/products"
                     component={() => <PorfolioBoard props={this.props} />}
+                  />
+                  <Route path="/product" component={() => <SingleItem />} />
+                  <Route
+                    path="/cart"
+                    component={() => <Cart props={this.props} />}
                   />
                   {/* <PrivateRoute
                     path="/products"
@@ -80,6 +56,7 @@ class App extends React.Component {
 }
 const mapActionsToProps = {
   logIn: LogInAction,
+  deleteItem: DeleteItem,
   updateCartItems: BuyNewItem
 };
 

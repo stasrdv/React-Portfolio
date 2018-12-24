@@ -26,7 +26,7 @@ const allReducers = combineReducers({
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(allReducers, applyMiddleware(logger, sagaMiddleware));
-sagaMiddleware.run(watchAgeUp);
+//sagaMiddleware.run(watchAgeUp);
 
 ReactDOM.render(
   <Provider store={store}>

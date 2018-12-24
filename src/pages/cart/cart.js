@@ -4,26 +4,25 @@ import { Card } from "../card/card-componets/porfolio-card";
 export class Cart extends React.Component {
   constructor(props) {
     super(props);
-    debugger;
-    this.state = { cardsList: this.props.items };
+    this.state = { cardsList: this.props.props.cartItems };
     this.deleteItem = this.deleteItem.bind(this);
-  }
-
-  findIndex(itemID) {
-    return this.state.cardsList.findIndex(cardItem => cardItem.id === itemID);
   }
 
   deleteItem = itemID => {
     const index = this.findIndex(itemID);
     if (index !== -1) {
       this.state.cardsList.splice(index, 1);
-      this.setState({ cardsList: this.state.cardsList });
-      this.props.onIntemDelete(this.state.cardsList);
     }
+    const filtered = this.state.cardsList;
+    this.props.props.deleteItem(filtered);
   };
 
+  findIndex(itemID) {
+    return this.state.cardsList.findIndex(cardItem => cardItem.id === itemID);
+  }
+
   render() {
-    const cardsList = this.state.cardsList;
+    const cardsList = this.props.props.cartItems;
     return (
       <div className="jumobtron board">
         <div className="row justify-content-center">

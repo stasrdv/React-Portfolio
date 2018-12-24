@@ -3,6 +3,7 @@ import "../../styles/css/singleItem.css";
 import { Card } from "../card/card-componets/porfolio-card";
 
 const SingleItem = data => {
+  debugger;
   const directProps = data.location.props;
   return (
     <div className="jumbotron single-item">

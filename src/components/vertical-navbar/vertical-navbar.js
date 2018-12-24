@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { SocialLinks } from "./social";
-import { CartLink } from "./cartLink";
+import { BannerImage } from "./banner";
 import SideNav, { NavItem, NavIcon, NavText } from "@trendmicro/react-sidenav";
 import "../../styles/css/vertical-navbar.css";
 import T from "i18n-react";
@@ -11,6 +11,14 @@ export class VerticalNavbar extends React.Component {
     super(props);
     this.state = { isMenuTranslated: false };
     this.toggleTranslate = this.toggleTranslate.bind(this);
+  }
+
+  logIn = () => {
+    this.props.props.logIn();
+  };
+
+  toggleTranslate() {
+    this.setState({ isMenuTranslated: !this.state.isMenuTranslated });
   }
 
   translateMenu() {
@@ -33,17 +41,9 @@ export class VerticalNavbar extends React.Component {
       }
     });
   }
-
-  toggleTranslate() {
-    this.setState({ isMenuTranslated: !this.state.isMenuTranslated });
-  }
-
   render() {
-    // const itemsInCart = this.props.pros.cartItems
-    //   ? this.props.pros.cartItems.length
-    //   : 0;
-
     const translateSuffix = this.state.isMenuTranslated ? "heb" : "en";
+    const itemsInCart = this.props.props.cartItems.length;
     this.translateMenu();
     return (
       <SideNav
@@ -54,44 +54,45 @@ export class VerticalNavbar extends React.Component {
         }}
       >
         <SideNav.Toggle />
+        {/* Banner Image */}
         <NavItem>
-          <div className="navbar-brand">
-            <img
-              className="img-responsive"
-              src="https://avatars0.githubusercontent.com/u/15888139?s=460&v=4"
-              width="auto"
-              height="100"
-            />
-          </div>
+          <BannerImage />
         </NavItem>
+        {/* Translate element */}
         <NavItem className="translate" onClick={this.toggleTranslate}>
           {translateSuffix.toUpperCase()}
           <NavIcon>
             <i className="fa fa-language" style={{ fontSize: "1.75em" }} />
           </NavIcon>
         </NavItem>
+        {/* Log In button */}
         <NavItem>
           <button
             type="button"
             className="btn btn-success .btm-md login"
-            onClick={() => this.props.logIn()}
+            onClick={() => this.logIn()}
           >
             Log In
           </button>
         </NavItem>
-
-        <NavItem>
-          {/* {this.props.pros.isUserLoggedIn ? (
-            <CartLink itemsInCart={itemsInCart} />
-          ) : null} */}
-        </NavItem>
+        {/* Cart */}
         <SideNav.Nav defaultSelected="home">
+          <NavItem eventKey="/cart">
+            <NavIcon>
+              <span className="fa-stack fa-1x cart-icon">
+                <i className="fa fa-cart-plus" aria-hidden="true" />
+                <strong className="fa-stack-1x cart-text">{itemsInCart}</strong>
+              </span>
+            </NavIcon>
+          </NavItem>
+          {/* Home */}
           <NavItem eventKey="/">
             <NavIcon>
               <i className="fa fa-fw fa-home" style={{ fontSize: "1.75em" }} />
             </NavIcon>
             <NavText>{T.translate(`Home.${translateSuffix}`)}</NavText>
           </NavItem>
+          {/* Products */}
           <NavItem eventKey="/products">
             <Link className="nav-link" to="/products" />
             <NavIcon>
@@ -99,14 +100,14 @@ export class VerticalNavbar extends React.Component {
             </NavIcon>
             <NavText>{T.translate(`Products.${translateSuffix}`)}</NavText>
           </NavItem>
-
+          {/* Contact */}
           <NavItem eventKey="/contact">
             <NavIcon>
               <i className="fa fa-envelope-o" style={{ fontSize: "1.75em" }} />
             </NavIcon>
             <NavText>{T.translate(`Contact.${translateSuffix}`)}</NavText>
           </NavItem>
-
+          {/* About */}
           <NavItem eventKey="/about">
             <NavIcon>
               <i className="fa fa-info" style={{ fontSize: "1.75em" }} />
@@ -114,7 +115,7 @@ export class VerticalNavbar extends React.Component {
             <NavText>{T.translate(`About.${translateSuffix}`)}</NavText>
           </NavItem>
         </SideNav.Nav>
-
+        {/* Social media */}
         <div className="row social">
           {socialMediaData.map(socialMediaObj => (
             <SocialLinks

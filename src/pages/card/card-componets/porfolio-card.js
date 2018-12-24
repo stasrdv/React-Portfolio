@@ -71,7 +71,7 @@ export class Card extends React.Component {
 
     return (
       <form className="col-sm-2 card" onSubmit={this.handleSubmit}>
-        <Link to={{ pathname: `/product/${cardProps.id}`, props: cardProps }}>
+        <Link to={{ pathname: `/product/${cardProps.id}` }}>
           <ImgTop img={cardProps.img} />
         </Link>
         <div className="card-body">
