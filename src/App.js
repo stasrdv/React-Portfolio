@@ -8,41 +8,23 @@ import HomePage from "./pages/home/home";
 import AboutPage from "./pages/about/about";
 import ContactPage from "./pages/contact/contact";
 import { Cart } from "./pages/cart/cart";
+import { withRouter } from "react-router-dom";
 import "./App.css";
 
 import { connect } from "react-redux";
 import { LogInAction } from "./reducers/actions/login-actions";
-import { CartItemsActions } from "./reducers/actions/cart-items-actions";
+import { BuyNewItem } from "./reducers/actions/cart-items-actions";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-
-    this.buyItem = this.buyItem.bind(this);
+    debugger;
     this.onIntemDelete = this.onIntemDelete.bind(this);
   }
 
   logIn = () => {
     this.props.logIn();
-    // this.setState({ isSpinnerActive: true });
-    // setTimeout(
-    //   () =>
-    //     this.setState({
-    //       isUserLoggedIn: !this.state.isUserLoggedIn,
-    //       isSpinnerActive: false
-    //     }),
-    //   1500
-    // );
   };
-
-  buyItem(newelement) {
-    const clonedArr = this.state.cartItems;
-    clonedArr.push(newelement);
-    this.state.updateCartItems(clonedArr);
-    // this.setState({
-    //   cartItems: clonedArr
-    // });
-  }
 
   onIntemDelete(_cartItems) {
     this.state.updateCartItems(_cartItems);
@@ -77,15 +59,10 @@ class App extends React.Component {
                   <Route exact path="/" component={HomePage} />
                   <Route path="/about" component={AboutPage} />
                   <Route path="/contact" component={ContactPage} />
-                  <Route path="/products" component={PorfolioBoard} />
+                  {/* <Route path="/products" component={PorfolioBoard} /> */}
                   <Route
-                    path="/cart"
-                    component={() => (
-                      <Cart
-                        onIntemDelete={this.onIntemDelete}
-                        items={this.state.cartItems}
-                      />
-                    )}
+                    path="/products"
+                    component={() => <PorfolioBoard props={this.props} />}
                   />
                   {/* <PrivateRoute
                     path="/products"
@@ -103,7 +80,7 @@ class App extends React.Component {
 }
 const mapActionsToProps = {
   logIn: LogInAction,
-  updateCartItems: CartItemsActions
+  updateCartItems: BuyNewItem
 };
 
 const mapStateToProps = state => ({

@@ -5,6 +5,10 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+//Saga
+import createSagaMiddleware from "redux-saga";
+import { watchAgeUp } from "./sagas/saga";
+
 // Redux
 import { Provider } from "react-redux";
 import logger from "redux-logger";
@@ -20,7 +24,9 @@ const allReducers = combineReducers({
   cartItems: cartItemsReducer
 });
 
-const store = createStore(allReducers, applyMiddleware(logger));
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(allReducers, applyMiddleware(logger, sagaMiddleware));
+sagaMiddleware.run(watchAgeUp);
 
 ReactDOM.render(
   <Provider store={store}>

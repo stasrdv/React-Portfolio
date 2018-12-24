@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../../styles/css/contact.css";
-const ContactPage = () => {
+const ContactPage = props => {
   return (
     <div className="col-sm-12">
       <div className="container">

@@ -1,8 +1,8 @@
-export function CartItemsActions(_items) {
+export function BuyNewItem(_item) {
   return {
-    type: "UPDATE_ITEMS",
+    type: "BUY_ITEMS",
     payload: {
-      items: _items
+      items: _item
     }
   };
 }
