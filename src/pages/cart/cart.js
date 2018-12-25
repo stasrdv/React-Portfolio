@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card } from "../card/card-componets/porfolio-card";
+import { Card } from "../../components/card/porfolio-card";
 
 export class Cart extends React.Component {
   constructor(props) {
@@ -25,7 +25,7 @@ export class Cart extends React.Component {
     const cardsList = this.props.props.cartItems;
     return (
       <div className="jumobtron board">
-        <div className="row justify-content-center">
+        <div className="row">
           {cardsList.map(singleCard => (
             <Card
               deleteItem={this.deleteItem}

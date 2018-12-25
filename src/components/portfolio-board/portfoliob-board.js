@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Card } from "../card/card-componets/porfolio-card";
+import { Card } from "../card/porfolio-card";
 import "../../styles/css/portfoliob-board.css";
 
 export class PorfolioBoard extends React.Component {
