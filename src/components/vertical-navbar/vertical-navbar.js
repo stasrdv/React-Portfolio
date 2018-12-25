@@ -45,6 +45,8 @@ export class VerticalNavbar extends React.Component {
   render() {
     const translateSuffix = this.state.isMenuTranslated ? "heb" : "en";
     const itemsInCart = this.props.props.cartItems.length;
+    const isDisplayed = this.props.props.isUserLoggedIn;
+
     this.translateMenu();
     return (
       <SideNav
@@ -68,15 +70,18 @@ export class VerticalNavbar extends React.Component {
           </NavIcon>
         </NavItem>
         {/* Log In button */}
-        <NavItem>
-          <button
-            type="button"
-            className="btn btn-success .btm-md login"
-            onClick={() => this.logIn()}
-          >
-            Log In
-          </button>
-        </NavItem>
+        {!isDisplayed ? (
+          <NavItem>
+            <button
+              type="button"
+              className="btn btn-success .btm-md login"
+              onClick={() => this.logIn()}
+            >
+              Log In
+            </button>
+          </NavItem>
+        ) : null}
+
         {/* Cart */}
         <SideNav.Nav defaultSelected="home">
           <NavItem eventKey="/cart">
