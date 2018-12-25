@@ -2,25 +2,14 @@ import React, { Component } from "react";
 import "../../styles/css/singleItem.css";
 import { Card } from "../card/porfolio-card";
 
-export default class SingleItem extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  componentDidMount() {}
-  render() {
-    const cardsList = this.props.props.cartItems;
-    return (
-      <div className="jumobtron board">
-        <div className="row">
-          {cardsList.map(singleCard => (
-            <Card
-              deleteItem={this.deleteItem}
-              isCartMode={true}
-              {...{ key: singleCard.id, ...singleCard }}
-            />
-          ))}
-        </div>
+const SingleItem = data => {
+  const directProps = data.location.singleItem;
+  return (
+    <div className="jumbotron single-item">
+      <div className="row justify-content-center">
+        <Card {...{ key: directProps.id, ...directProps }} />
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+export default SingleItem;

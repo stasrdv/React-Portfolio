@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import "../../styles/css/portfoliob-board.css";
+import "../../styles/css/porfolio-card.css";
 import { ImgTop } from "./card-componets/img-top";
 import { CardDisplayBody } from "./card-componets/card-body";
 import { CardFooter } from "./card-componets/card-footer";
@@ -28,16 +28,14 @@ export class Card extends React.Component {
 
   render() {
     const cardProps = this.props;
+
+    const newTo = {
+      pathname: `/product/${cardProps.id}`,
+      singleItem: cardProps
+    };
     return (
       <form className="col-sm-2 card">
-        <Link
-          to={{
-            pathname: `/product/${cardProps.id}`,
-            state: {
-              is: 0
-            }
-          }}
-        >
+        <Link to={newTo}>
           <ImgTop img={cardProps.img} />
         </Link>
         <div className="card-body">

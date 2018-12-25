@@ -14,6 +14,7 @@ export class VerticalNavbar extends React.Component {
   }
 
   logIn = () => {
+    this.props.props.isClicked();
     this.props.props.logIn();
   };
 
@@ -58,6 +59,7 @@ export class VerticalNavbar extends React.Component {
         <NavItem>
           <BannerImage />
         </NavItem>
+
         {/* Translate element */}
         <NavItem className="translate" onClick={this.toggleTranslate}>
           {translateSuffix.toUpperCase()}
