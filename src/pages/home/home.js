@@ -8,7 +8,7 @@ const HomePage = props => {
       <div className="container">
         <h1 className="display-4">Welcome to my portfolio store</h1>
         <p className="lead">
-          The link to products will be available only after login !
+          The links to Products,and Cart will be available only after login !
         </p>
         <hr className="my-4" />
         {info ? <h3>{info}</h3> : null}

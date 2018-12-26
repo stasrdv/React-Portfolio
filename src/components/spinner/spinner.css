@@ -22,7 +22,7 @@
   margin: 0 auto;
   width: 15%;
   height: 15%;
-  background-color: rgb(36, 123, 193);
+  background-color: #0366d6;
   border-radius: 100%;
   animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;
 }

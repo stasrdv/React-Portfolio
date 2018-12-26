@@ -1,5 +1,10 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect
+} from "react-router-dom";
 import { VerticalNavbar } from "./components/vertical-navbar/vertical-navbar";
 import { Spinner } from "./components/spinner/spinner";
 import { PorfolioBoard } from "./components/portfolio-board/portfoliob-board";
@@ -19,6 +24,20 @@ import { DeleteItem } from "./reducers/actions/cart-items-actions";
 
 class App extends React.Component {
   render() {
+    console.log(this.props);
+    const PrivateRoute = ({ component: Component, ...rest }) => (
+      <Route
+        {...rest}
+        render={props =>
+          this.props.isUserLoggedIn ? (
+            <Component {...props} />
+          ) : (
+            <Redirect to="/" />
+          )
+        }
+      />
+    );
+
     return (
       <Router>
         <Route
@@ -31,15 +50,15 @@ class App extends React.Component {
                   <Route exact path="/" component={HomePage} />
                   <Route path="/about" component={AboutPage} />
                   <Route path="/contact" component={ContactPage} />
-                  <Route
+                  <PrivateRoute
                     path="/products"
                     component={() => <PorfolioBoard props={this.props} />}
                   />
-                  <Route
+                  <PrivateRoute
                     path="/product"
                     component={() => <SingleItem location={location} />}
                   />
-                  <Route
+                  <PrivateRoute
                     path="/cart"
                     component={() => <Cart props={this.props} />}
                   />
@@ -52,6 +71,7 @@ class App extends React.Component {
     );
   }
 }
+
 const mapActionsToProps = {
   logIn: LogInAction,
   isClicked: isClicked,
