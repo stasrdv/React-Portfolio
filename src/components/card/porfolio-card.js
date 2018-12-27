@@ -1,52 +1,30 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import "../../styles/css/porfolio-card.css";
-import { ImgTop } from "./card-componets/img-top";
 import { CardDisplayBody } from "./card-componets/card-body";
 import { CardFooter } from "./card-componets/card-footer";
+import "../../styles/css/porfolio-card.css";
 
 export class Card extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      title: this.props.title,
-      description: this.props.description
-    };
-
-    this.buyItem = this.buyItem.bind(this);
-    this.deleteItem = this.deleteItem.bind(this);
-  }
-
-  buyItem() {
-    this.props.buyItem(this.props);
-  }
-
-  deleteItem() {
-    this.props.deleteItem(this.props.id);
   }
 
   render() {
-    const cardProps = this.props;
-
     const newTo = {
-      pathname: `/product/${cardProps.id}`,
-      singleItem: cardProps
+      pathname: `/product/${this.props.id}`,
+      singleItem: this.props
     };
     return (
       <form className="col-sm-2 card">
         <Link to={newTo}>
-          <ImgTop img={cardProps.img} />
+          <img className="card-img-top" src={this.props.img} />
         </Link>
         <div className="card-body">
           <div className="form-group" />
-          <CardDisplayBody props={cardProps} />
+          <CardDisplayBody {...this.props} />
         </div>
-        <CardFooter
-          props={cardProps}
-          buyItem={this.buyItem}
-          deleteItem={this.deleteItem}
-        />
+        <CardFooter {...this.props} />
       </form>
     );
   }

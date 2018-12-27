@@ -1,34 +1,19 @@
-import React, { Component } from "react";
+import React from "react";
 import { Card } from "../../components/card/porfolio-card";
 
 export class Cart extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { cardsList: this.props.props.cartItems };
-    this.deleteItem = this.deleteItem.bind(this);
-  }
-
-  deleteItem = itemID => {
-    const index = this.findIndex(itemID);
-    if (index !== -1) {
-      this.state.cardsList.splice(index, 1);
-    }
-    const filtered = this.state.cardsList;
-    this.props.props.deleteItem(filtered);
-  };
-
-  findIndex(itemID) {
-    return this.state.cardsList.findIndex(cardItem => cardItem.id === itemID);
   }
 
   render() {
-    const cardsList = this.props.props.cartItems;
+    const cardsList = this.props.cartItems;
     return (
       <div className="jumobtron board">
         <div className="row">
           {cardsList.map(singleCard => (
             <Card
-              deleteItem={this.deleteItem}
+              {...this.props}
               isCartMode={true}
               {...{ key: singleCard.id, ...singleCard }}
             />

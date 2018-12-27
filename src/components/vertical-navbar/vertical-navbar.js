@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { SocialLinks } from "./social";
 import { BannerImage } from "./banner";
@@ -12,11 +12,6 @@ export class VerticalNavbar extends React.Component {
     this.state = { isMenuTranslated: false };
     this.toggleTranslate = this.toggleTranslate.bind(this);
   }
-
-  logIn = () => {
-    this.props.props.isClicked();
-    this.props.props.logIn();
-  };
 
   toggleTranslate() {
     this.setState({ isMenuTranslated: !this.state.isMenuTranslated });
@@ -44,8 +39,8 @@ export class VerticalNavbar extends React.Component {
   }
   render() {
     const translateSuffix = this.state.isMenuTranslated ? "heb" : "en";
-    const itemsInCart = this.props.props.cartItems.length;
-    const isDisplayed = this.props.props.isUserLoggedIn;
+    const itemsInCart = this.props.cartItems.length;
+    const isDisplayed = this.props.isUserLoggedIn;
 
     this.translateMenu();
     return (
@@ -70,17 +65,17 @@ export class VerticalNavbar extends React.Component {
           </NavIcon>
         </NavItem>
         {/* Log In button */}
-        {!isDisplayed ? (
+        {!isDisplayed && (
           <NavItem>
             <button
               type="button"
               className="btn btn-success .btm-md login"
-              onClick={() => this.logIn()}
+              onClick={() => this.props.logIn()}
             >
               Log In
             </button>
           </NavItem>
-        ) : null}
+        )}
 
         {/* Cart */}
         <SideNav.Nav defaultSelected="home">
@@ -125,10 +120,7 @@ export class VerticalNavbar extends React.Component {
         {/* Social media */}
         <div className="row social">
           {socialMediaData.map(socialMediaObj => (
-            <SocialLinks
-              key={socialMediaObj.faClassName}
-              props={socialMediaObj}
-            />
+            <SocialLinks key={socialMediaObj.faClassName} {...socialMediaObj} />
           ))}
         </div>
       </SideNav>

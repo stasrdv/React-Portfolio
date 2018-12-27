@@ -17,11 +17,9 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import ItemsReducer from "./reducers/itemsReducer";
 import cartItemsReducer from "./reducers/cartItemsReducer";
 import loginReducer from "./reducers/loginReducer";
-import loginBtnReducer from "./reducers/login-btn-reducer";
 
 const allReducers = combineReducers({
   isLoggedInAction: loginReducer,
-  isClicked: loginBtnReducer,
   items: ItemsReducer,
   cartItems: cartItemsReducer
 });

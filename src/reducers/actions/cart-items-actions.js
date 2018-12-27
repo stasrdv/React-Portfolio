@@ -1,13 +1,13 @@
-export function BuyNewItem(item) {
+export function buyNewItem(item) {
   return {
     type: "BUY_ITEMS",
     payload: item
   };
 }
 
-export function DeleteItem(items) {
+export function deleteItem(id) {
   return {
     type: "DELETE_ITEM",
-    payload: items
+    payload: id
   };
 }

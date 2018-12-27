@@ -1,28 +1,19 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React from "react";
 import { Card } from "../card/porfolio-card";
 import "../../styles/css/portfoliob-board.css";
 
 export class PorfolioBoard extends React.Component {
   constructor(props) {
     super(props);
-    this.buyItem = this.buyItem.bind(this);
-  }
-
-  buyItem(newelement) {
-    this.props.props.updateCartItems(newelement);
   }
 
   render() {
-    const cardsList = this.props.props.items;
+    const cardsList = this.props.items;
     return (
       <div className="jumbotron board">
         <div className="row">
           {cardsList.map(singleCard => (
-            <Card
-              {...{ key: singleCard.id, ...singleCard }}
-              buyItem={this.buyItem}
-            />
+            <Card {...{ key: singleCard.id, ...singleCard }} {...this.props} />
           ))}
         </div>
       </div>

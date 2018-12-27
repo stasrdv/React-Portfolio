@@ -1,13 +1,16 @@
 const initialState = {
-  loggedIn: false
+  loggedIn: false,
+  isSpinnerActive: false
 };
 
 export default function loginReducer(state = initialState, action) {
   switch (action.type) {
     case "logIn":
       return { ...state, loggedIn: false };
-    case "ajax-request":
-      return { ...state, loggedIn: true };
+    case "LOGIN_PENDING":
+      return { ...state, loggedIn: false, isSpinnerActive: true };
+    case "LOGIN_SUCCESS":
+      return { ...state, loggedIn: true, isSpinnerActive: false };
     default:
       return state;
   }

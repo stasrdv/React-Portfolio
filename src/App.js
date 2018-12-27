@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -17,14 +17,12 @@ import { Cart } from "./pages/cart/cart";
 import "./App.css";
 
 import { connect } from "react-redux";
-import { LogInAction } from "./reducers/actions/login-actions";
-import { isClicked } from "./reducers/actions/login-clicked-action";
-import { BuyNewItem } from "./reducers/actions/cart-items-actions";
-import { DeleteItem } from "./reducers/actions/cart-items-actions";
+import { logInAction } from "./reducers/actions/login-actions";
+import { buyNewItem } from "./reducers/actions/cart-items-actions";
+import { deleteItem } from "./reducers/actions/cart-items-actions";
 
 class App extends React.Component {
   render() {
-    console.log(this.props);
     const PrivateRoute = ({ component: Component, ...rest }) => (
       <Route
         {...rest}
@@ -43,8 +41,8 @@ class App extends React.Component {
         <Route
           render={({ location, history }) => (
             <div className="wrapper">
-              <Spinner props={this.props} />
-              <VerticalNavbar props={this.props} history={history} />
+              <Spinner {...this.props} />
+              <VerticalNavbar {...this.props} history={history} />
               <div className="content">
                 <Switch>
                   <Route exact path="/" component={HomePage} />
@@ -52,15 +50,17 @@ class App extends React.Component {
                   <Route path="/contact" component={ContactPage} />
                   <PrivateRoute
                     path="/products"
-                    component={() => <PorfolioBoard props={this.props} />}
+                    component={() => <PorfolioBoard {...this.props} />}
                   />
                   <PrivateRoute
                     path="/product"
-                    component={() => <SingleItem location={location} />}
+                    component={() => (
+                      <SingleItem location={location} {...this.props} />
+                    )}
                   />
                   <PrivateRoute
                     path="/cart"
-                    component={() => <Cart props={this.props} />}
+                    component={() => <Cart {...this.props} />}
                   />
                 </Switch>
               </div>
@@ -73,16 +73,15 @@ class App extends React.Component {
 }
 
 const mapActionsToProps = {
-  logIn: LogInAction,
-  isClicked: isClicked,
-  deleteItem: DeleteItem,
-  updateCartItems: BuyNewItem
+  logIn: logInAction,
+  deleteItem: deleteItem,
+  buyNewItem: buyNewItem
 };
 
 const mapStateToProps = state => ({
   items: state.items,
   isUserLoggedIn: state.isLoggedInAction.loggedIn,
-  isLoginclicked: state.isClicked.loggedIn,
+  isSpinnerActive: state.isLoggedInAction.isSpinnerActive,
   cartItems: state.cartItems
 });
 

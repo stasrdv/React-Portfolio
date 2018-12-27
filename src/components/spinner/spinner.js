@@ -1,11 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import "./spinner.css";
 
 export function Spinner(props) {
-  const isLoginclicked = props.props.isLoginclicked;
-  const isUserLoggedIn = props.props.isUserLoggedIn;
-
-  if (isLoginclicked && !isUserLoggedIn) {
+  const isSpinnerActive = props.isSpinnerActive;
+  if (isSpinnerActive) {
     return (
       <div className="sk-fading-circle">
         <div className="sk-circle1 sk-circle" />

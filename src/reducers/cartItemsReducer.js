@@ -3,7 +3,10 @@ export default function cartItemsReducer(state = [], action) {
     case "BUY_ITEMS":
       return [...state, action.payload];
     case "DELETE_ITEM":
-      return [...state];
+      const filterdState = state;
+      const itemIndex = state.findIndex(item => item.id === action.payload);
+      filterdState.splice(itemIndex, 1);
+      return [...filterdState];
     default:
       return state;
   }

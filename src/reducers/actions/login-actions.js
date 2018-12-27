@@ -1,4 +1,4 @@
-export function LogInAction() {
+export function logInAction() {
   return {
     type: "logIn",
     payload: false
