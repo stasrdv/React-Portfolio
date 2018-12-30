@@ -61,7 +61,7 @@ export class VerticalNavbar extends React.Component {
         <NavItem className="translate" onClick={this.toggleTranslate}>
           {translateSuffix.toUpperCase()}
           <NavIcon>
-            <i className="fa fa-language" style={{ fontSize: "1.75em" }} />
+            <i className="fa fa-language" />
           </NavIcon>
         </NavItem>
         {/* Log In button */}
@@ -90,7 +90,7 @@ export class VerticalNavbar extends React.Component {
           {/* Home */}
           <NavItem eventKey="/">
             <NavIcon>
-              <i className="fa fa-fw fa-home" style={{ fontSize: "1.75em" }} />
+              <i className="fa fa-fw fa-home" />
             </NavIcon>
             <NavText>{T.translate(`Home.${translateSuffix}`)}</NavText>
           </NavItem>
@@ -98,21 +98,21 @@ export class VerticalNavbar extends React.Component {
           <NavItem eventKey="/products">
             <Link className="nav-link" to="/products" />
             <NavIcon>
-              <i className="fa fa-list" style={{ fontSize: "1.75em" }} />
+              <i className="fa fa-list" />
             </NavIcon>
             <NavText>{T.translate(`Products.${translateSuffix}`)}</NavText>
           </NavItem>
           {/* Contact */}
           <NavItem eventKey="/contact">
             <NavIcon>
-              <i className="fa fa-envelope-o" style={{ fontSize: "1.75em" }} />
+              <i className="fa fa-envelope-o" />
             </NavIcon>
             <NavText>{T.translate(`Contact.${translateSuffix}`)}</NavText>
           </NavItem>
           {/* About */}
           <NavItem eventKey="/about">
             <NavIcon>
-              <i className="fa fa-info" style={{ fontSize: "1.75em" }} />
+              <i className="fa fa-info" />
             </NavIcon>
             <NavText>{T.translate(`About.${translateSuffix}`)}</NavText>
           </NavItem>
