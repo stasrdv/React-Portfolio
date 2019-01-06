@@ -10,7 +10,7 @@ export class PorfolioBoard extends React.Component {
   render() {
     const cardsList = this.props.items;
     return (
-      <div className="jumbotron board">
+      <div className="board">
         <div className="row">
           {cardsList.map(singleCard => (
             <Card {...{ key: singleCard.id, ...singleCard }} {...this.props} />

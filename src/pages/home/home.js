@@ -4,7 +4,7 @@ import "../../styles/css/home.css";
 const HomePage = props => {
   const info = props.info;
   return (
-    <div className="jumbotron home-page">
+    <div className="home-page">
       <div className="container">
         <h1 className="display-4">Welcome to my portfolio store</h1>
         <p className="lead">

@@ -6,9 +6,14 @@
     #207cca 51%,
     #7db9e8 100%
   ) !important;
-  position: fixed !important;
+  flex-grow: 1;
+
+  /* position: fixed !important;
   overflow: auto;
-  height: 100%;
+  height: 100%; */
+}
+.sidenav---sidenav---_2tBP {
+  position: relative !important;
 }
 .translate {
   margin-left: 26px;
@@ -45,4 +50,3 @@
 .i {
   font-size: 1.75em;
 }
-/* fontSize: "1.75em" */
