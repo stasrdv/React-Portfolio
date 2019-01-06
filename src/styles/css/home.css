@@ -4,10 +4,10 @@
 
 .home-page {
   color: #fff;
+  min-height: 100vh;
   background: linear-gradient(
     to bottom,
     #49c0f0 0%,
     #2cafe3 100%
   ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  height: 100vh;
 }

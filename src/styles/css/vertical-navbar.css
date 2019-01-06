@@ -6,8 +6,19 @@
     #207cca 51%,
     #7db9e8 100%
   ) !important;
+<<<<<<< HEAD
   flex-grow: 0;
   min-height: 100vh;
+=======
+  flex-grow: 1;
+
+  /* position: fixed !important;
+  overflow: auto;
+  height: 100%; */
+}
+.sidenav---sidenav---_2tBP {
+  position: relative !important;
+>>>>>>> 7edd01c4e82f70ec3cf62f0d1cf6027ec45b195a
 }
 .translate {
   margin-left: 26px;
@@ -44,7 +55,10 @@
 .i {
   font-size: 1.75em;
 }
+<<<<<<< HEAD
 .sidenav---sidenav---_2tBP {
   position: relative !important;
 }
 /* fontSize: "1.75em" */
+=======
+>>>>>>> 7edd01c4e82f70ec3cf62f0d1cf6027ec45b195a

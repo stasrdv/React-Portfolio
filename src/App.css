@@ -1,6 +1,26 @@
+<<<<<<< HEAD
 .wrapper {
   display: flex;
 }
 .content {
   flex-grow: 4;
+=======
+/* .content {
+  margin-left: 115px;
+  position: relative;
+}
+html,
+body,
+.container {
+  height: 100%;
+} */
+
+.wrapper {
+  display: flex;
+  min-height: 100vh;
+  align-items: stretch;
+}
+.content {
+  flex-grow: 3;
+>>>>>>> 7edd01c4e82f70ec3cf62f0d1cf6027ec45b195a
 }

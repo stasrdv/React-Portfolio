@@ -1,7 +1,11 @@
 .porfolioBoard {
   background: -webkit-linear-gradient(top, #eeeeee 0%, #cccccc 100%);
+<<<<<<< HEAD
   /* flex-wrap: wrap; */
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+=======
+  /* min-height: 100vh; */
+>>>>>>> 7edd01c4e82f70ec3cf62f0d1cf6027ec45b195a
 }
