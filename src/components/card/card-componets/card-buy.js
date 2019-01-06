@@ -7,16 +7,14 @@ export function CardBuyMode(props) {
         <a href={props.url} className="card-link">
           Check Now
         </a>
-        <div className="row control-buttons">
-          <div className="col-sm-6">
-            <button
-              type="button"
-              className="btn btn-warning btn-sm align-self-end"
-              onClick={() => props.buyNewItem(props)}
-            >
-              Buy
-            </button>
-          </div>
+        <div className="control-buttons">
+          <button
+            type="button"
+            className="btn btn-warning btn-sm align-self-end"
+            onClick={() => props.buyNewItem(props)}
+          >
+            Buy
+          </button>
         </div>
       </div>
     </>

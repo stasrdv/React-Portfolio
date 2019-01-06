@@ -8,15 +8,13 @@ export function CardDeleteMode(props) {
           Check Now
         </a>
         <div className="row control-buttons">
-          <div className="col-sm-6">
-            <button
-              type="button"
-              onClick={() => props.deleteItem(props.id)}
-              className="btn btn-danger btn-sm"
-            >
-              Delete
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={() => props.deleteItem(props.id)}
+            className="btn btn-danger btn-sm"
+          >
+            Delete
+          </button>
         </div>
       </div>
     </>

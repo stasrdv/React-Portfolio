@@ -16,7 +16,7 @@ export class Card extends React.Component {
       singleItem: this.props
     };
     return (
-      <form className="col-sm-2 card">
+      <div className="item-card">
         <Link to={newTo}>
           <img className="card-img-top" src={this.props.img} />
         </Link>
@@ -25,7 +25,7 @@ export class Card extends React.Component {
           <CardDisplayBody {...this.props} />
         </div>
         <CardFooter {...this.props} />
-      </form>
+      </div>
     );
   }
 }
