@@ -1,4 +1,4 @@
-.board {
+.single-item {
   background: -webkit-linear-gradient(top, #eeeeee 0%, #cccccc 100%);
-  min-height: 100vh;
+  height: 100vh;
 }

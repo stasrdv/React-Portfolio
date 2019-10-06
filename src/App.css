@@ -1,3 +1,6 @@
-.isAboutPageActive {
-  display: none;
+.content {
+  margin-left: 115px;
+}
+.wrapper {
+  height: 100%;
 }

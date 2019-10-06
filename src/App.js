@@ -1,31 +1,110 @@
 import React, { Component } from "react";
-import { VerticalNavbar } from "./components/vertical-navbar";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch,
+  Redirect,
+  BrowserRouter
+} from "react-router-dom";
+import { VerticalNavbar } from "./components/vertical-navbar/vertical-navbar";
 import { PorfolioBoard } from "./components/portfoliob-board";
+import { SingleItem } from "./components/singleItem";
+import { Spinner } from "./components/spinner/spinner";
+import { HomePage } from "./components/home";
 import { AboutPage } from "./components/about";
+import { ContactPage } from "./components/contact";
+import { Cart } from "./components/cart";
 import "./App.css";
 
 class App extends React.Component {
-  ActiveComponent = PorfolioBoard;
   constructor(props) {
     super(props);
     this.state = {
-      isAboutPageActive: false
+      isUserLoggedIn: false,
+      isSpinnerActive: false,
+      cartItems: []
     };
+    this.buyItem = this.buyItem.bind(this);
+    this.onIntemDelete = this.onIntemDelete.bind(this);
   }
 
-  toggleDisplay = () => {
-    this.setState({ isAboutPageActive: !this.state.isAboutPageActive });
+  logIn = () => {
+    this.setState({ isSpinnerActive: true });
+    setTimeout(
+      () =>
+        this.setState({
+          isUserLoggedIn: !this.state.isUserLoggedIn,
+          isSpinnerActive: false
+        }),
+      1500
+    );
   };
 
+  buyItem(newelement) {
+    const clonedArr = this.state.cartItems;
+    clonedArr.push(newelement);
+    this.setState({
+      cartItems: clonedArr
+    });
+  }
+
+  onIntemDelete(_cartItems) {
+    this.setState({
+      cartItems: _cartItems
+    });
+  }
+
   render() {
-    this.ActiveComponent = !this.state.isAboutPageActive
-      ? PorfolioBoard
-      : AboutPage;
+    //block products route
+    const PrivateRoute = ({ component: Component, ...rest }) => (
+      <Route
+        {...rest}
+        render={props =>
+          this.state.isUserLoggedIn === true ? (
+            <Component {...props} />
+          ) : (
+            <Redirect to="/" />
+          )
+        }
+      />
+    );
     return (
-      <div className="row">
-        <VerticalNavbar toggleDisplay={this.toggleDisplay} />
-        <this.ActiveComponent />
-      </div>
+      <Router>
+        <Route
+          render={({ location, history }) => (
+            <div className="wrapper">
+              <Spinner props={this.state.isSpinnerActive} />
+              <VerticalNavbar
+                logIn={this.logIn}
+                pros={this.state}
+                history={history}
+              />
+              <div className="content">
+                <Switch>
+                  <Route exact path="/" component={HomePage} />
+                  <Route path="/about" component={AboutPage} />
+                  <Route path="/contact" component={ContactPage} />
+                  <Route
+                    path="/cart"
+                    component={() => (
+                      <Cart
+                        onIntemDelete={this.onIntemDelete}
+                        items={this.state.cartItems}
+                      />
+                    )}
+                  />
+                  <PrivateRoute
+                    path="/products"
+                    component={() => <PorfolioBoard buyItem={this.buyItem} />}
+                  />
+                  <PrivateRoute path="/product" component={SingleItem} />
+                </Switch>
+              </div>
+            </div>
+          )}
+        />
+      </Router>
     );
   }
 }

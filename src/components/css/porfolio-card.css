@@ -2,6 +2,7 @@
   margin: 20px;
   background: -webkit-linear-gradient(top, #f2f9fe 0%, #d6f0fd 100%);
   box-shadow: 9px 2px 5px -6px rgba(0, 0, 0, 0.75);
+  border: 1px solid #2784e9;
 }
 .card-img-top {
   padding-top: 10px;

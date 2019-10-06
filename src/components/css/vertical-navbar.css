@@ -1,17 +1,29 @@
 .verticalNavbar {
   background: -webkit-linear-gradient(
     top,
-    #1e5799 0%,
+    #1e5799 10%,
     #2989d8 50%,
     #207cca 51%,
     #7db9e8 100%
-  );
+  ) !important;
+}
+.nav-link {
+  color: white;
+  padding-left: 3px !important;
+}
+.nav-link:hover {
+  color: black;
+}
+.cart-text {
+  margin-left: 20px;
+}
+.cart-icon {
+  margin-left: 20px;
 }
 .fa {
   font-size: 25px;
 }
 .fa-facebook {
-  margin-left: 15px;
   color: white;
 }
 .fa-linkedin {
@@ -23,9 +35,4 @@
 .social {
   position: fixed;
   bottom: 0;
-}
-.col-centered {
-  float: none;
-  display: block;
-  margin: 0 auto;
 }
